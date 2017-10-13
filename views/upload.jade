@@ -14,5 +14,5 @@ html
           form(action="/upload", method="post", enctype="multipart/form-data")
             input(type="file", name="ufile" accept=".txt")
             input(type="submit", name="Upload")
-          a(target="blank", href="/file/latest") Lastest Uploaded file
+          a(target="blank", href="/file/latest") Lastest Uploaded file #{uploaded ? '| New file uploaded':''}           
         div.col-xs-2
