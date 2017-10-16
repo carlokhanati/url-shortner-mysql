@@ -33,6 +33,16 @@
             },
             "scale": null,
             "properties": {
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "DATABASE",
+                            "value": "Mysql"
+                        }
+                    ]
+                  },
+                "RepoUrl": "[parameters('repoUrl')]",
+                "branch": "[parameters('branch')]",
                 "enabled": true,
                 "hostNameSslStates": [
                     {
