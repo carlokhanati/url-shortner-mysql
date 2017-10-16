@@ -1,0 +1,382 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sites_url_shortner_web_name": {
+            "defaultValue": "url-shortner-web",
+            "type": "String"
+        },
+        "config_web_name": {
+            "defaultValue": "web",
+            "type": "String"
+        },
+        "hostNameBindings_url_shortner_web.azurewebsites.net_name": {
+            "defaultValue": "url-shortner-web.azurewebsites.net",
+            "type": "String"
+        },
+        "deployments_8b365d97b95ea0f8a4f63553a162d949e8a42e97_name": {
+            "defaultValue": "8b365d97b95ea0f8a4f63553a162d949e8a42e97",
+            "type": "String"
+        },
+        "deployments_09ae4394b77eb3844e5383c69d6f44fda478c82b_name": {
+            "defaultValue": "09ae4394b77eb3844e5383c69d6f44fda478c82b",
+            "type": "String"
+        },
+        "deployments_2c1c0193b06bc49920147d5542d5c867d050ecee_name": {
+            "defaultValue": "2c1c0193b06bc49920147d5542d5c867d050ecee",
+            "type": "String"
+        },
+        "deployments_540b67971b87e0e002bf3c66c1818701902b712c_name": {
+            "defaultValue": "540b67971b87e0e002bf3c66c1818701902b712c",
+            "type": "String"
+        },
+        "deployments_30b5941a4c58eae846e0868d1c040b752d64a273_name": {
+            "defaultValue": "30b5941a4c58eae846e0868d1c040b752d64a273",
+            "type": "String"
+        },
+        "deployments_2bbf08ac0699bbf28ca51aaec59424908e65a7c7_name": {
+            "defaultValue": "2bbf08ac0699bbf28ca51aaec59424908e65a7c7",
+            "type": "String"
+        },
+        "deployments_a9e36558735dc536e27746786f1d48baa48e698c_name": {
+            "defaultValue": "a9e36558735dc536e27746786f1d48baa48e698c",
+            "type": "String"
+        },
+        "sites_url_shortner_web_serverFarmId": {
+            "defaultValue": "/subscriptions/c05189e6-d49a-4c94-a3de-5a792beb4f3e/resourceGroups/Default-Web-NorthEurope/providers/Microsoft.Web/serverfarms/Default1",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "Generalized from resource: '/subscriptions/c05189e6-d49a-4c94-a3de-5a792beb4f3e/resourceGroups/url-shortner-rg/providers/Microsoft.Web/sites/url-shortner-web'.",
+            "type": "Microsoft.Web/sites",
+            "kind": "app",
+            "name": "[parameters('sites_url_shortner_web_name')]",
+            "apiVersion": "2016-08-01",
+            "location": "North Europe",
+            "tags": {
+                "hidden-related:/subscriptions/c05189e6-d49a-4c94-a3de-5a792beb4f3e/resourcegroups/Default-Web-NorthEurope/providers/Microsoft.Web/serverfarms/Default1": "empty"
+            },
+            "scale": null,
+            "properties": {
+                "enabled": true,
+                "hostNameSslStates": [
+                    {
+                        "name": "[concat(parameters('sites_url_shortner_web_name'),'.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "virtualIP": null,
+                        "thumbprint": null,
+                        "toUpdate": null,
+                        "hostType": "Standard"
+                    },
+                    {
+                        "name": "[concat(parameters('sites_url_shortner_web_name'),'.scm.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "virtualIP": null,
+                        "thumbprint": null,
+                        "toUpdate": null,
+                        "hostType": "Repository"
+                    }
+                ],
+                "serverFarmId": "[parameters('sites_url_shortner_web_serverFarmId')]",
+                "reserved": false,
+                "siteConfig": null,
+                "scmSiteAlsoStopped": false,
+                "hostingEnvironmentProfile": null,
+                "clientAffinityEnabled": true,
+                "clientCertEnabled": false,
+                "hostNamesDisabled": false,
+                "containerSize": 0,
+                "dailyMemoryTimeQuota": 0,
+                "cloningInfo": null
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c05189e6-d49a-4c94-a3de-5a792beb4f3e/resourceGroups/url-shortner-rg/providers/Microsoft.Web/sites/url-shortner-web/config/web'.",
+            "type": "Microsoft.Web/sites/config",
+            "name": "[concat(parameters('sites_url_shortner_web_name'), '/', parameters('config_web_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "North Europe",
+            "tags": {
+                "hidden-related:/subscriptions/c05189e6-d49a-4c94-a3de-5a792beb4f3e/resourcegroups/Default-Web-NorthEurope/providers/Microsoft.Web/serverfarms/Default1": "empty"
+            },
+            "scale": null,
+            "properties": {
+                "numberOfWorkers": 1,
+                "defaultDocuments": [
+                    "Default.htm",
+                    "Default.html",
+                    "Default.asp",
+                    "index.htm",
+                    "index.html",
+                    "iisstart.htm",
+                    "default.aspx",
+                    "index.php",
+                    "hostingstart.html"
+                ],
+                "netFrameworkVersion": "v4.0",
+                "phpVersion": "5.6",
+                "pythonVersion": "",
+                "nodeVersion": "",
+                "linuxFxVersion": "",
+                "requestTracingEnabled": false,
+                "remoteDebuggingEnabled": false,
+                "remoteDebuggingVersion": "VS2012",
+                "httpLoggingEnabled": false,
+                "logsDirectorySizeLimit": 35,
+                "detailedErrorLoggingEnabled": false,
+                "publishingUsername": "[concat('$url-shortner-', parameters('config_web_name'))]",
+                "publishingPassword": null,
+                "appSettings": null,
+                "metadata": null,
+                "connectionStrings": null,
+                "machineKey": null,
+                "handlerMappings": null,
+                "documentRoot": null,
+                "scmType": "GitHub",
+                "use32BitWorkerProcess": true,
+                "webSocketsEnabled": false,
+                "alwaysOn": false,
+                "javaVersion": null,
+                "javaContainer": null,
+                "javaContainerVersion": null,
+                "appCommandLine": "",
+                "managedPipelineMode": "Integrated",
+                "virtualApplications": [
+                    {
+                        "virtualPath": "/",
+                        "physicalPath": "site\\wwwroot",
+                        "preloadEnabled": false,
+                        "virtualDirectories": null
+                    }
+                ],
+                "winAuthAdminState": 0,
+                "winAuthTenantState": 0,
+                "customAppPoolIdentityAdminState": false,
+                "customAppPoolIdentityTenantState": false,
+                "runtimeADUser": null,
+                "runtimeADUserPassword": null,
+                "loadBalancing": "LeastRequests",
+                "routingRules": [],
+                "experiments": {
+                    "rampUpRules": []
+                },
+                "limits": null,
+                "autoHealEnabled": false,
+                "autoHealRules": {
+                    "triggers": null,
+                    "actions": null
+                },
+                "tracingOptions": null,
+                "vnetName": "",
+                "siteAuthEnabled": false,
+                "siteAuthSettings": {
+                    "enabled": null,
+                    "unauthenticatedClientAction": null,
+                    "tokenStoreEnabled": null,
+                    "allowedExternalRedirectUrls": null,
+                    "defaultProvider": null,
+                    "clientId": null,
+                    "clientSecret": null,
+                    "issuer": null,
+                    "allowedAudiences": null,
+                    "additionalLoginParams": null,
+                    "isAadAutoProvisioned": false,
+                    "googleClientId": null,
+                    "googleClientSecret": null,
+                    "googleOAuthScopes": null,
+                    "facebookAppId": null,
+                    "facebookAppSecret": null,
+                    "facebookOAuthScopes": null,
+                    "twitterConsumerKey": null,
+                    "twitterConsumerSecret": null,
+                    "microsoftAccountClientId": null,
+                    "microsoftAccountClientSecret": null,
+                    "microsoftAccountOAuthScopes": null
+                },
+                "cors": null,
+                "push": null,
+                "apiDefinition": null,
+                "autoSwapSlotName": null,
+                "localMySqlEnabled": false,
+                "ipSecurityRestrictions": null
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_url_shortner_web_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c05189e6-d49a-4c94-a3de-5a792beb4f3e/resourcegroups/url-shortner-rg/providers/Microsoft.Web/sites/url-shortner-web/deployments/8b365d97b95ea0f8a4f63553a162d949e8a42e97'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_url_shortner_web_name'), '/', parameters('deployments_8b365d97b95ea0f8a4f63553a162d949e8a42e97_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "North Europe",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_8b365d97b95ea0f8a4f63553a162d949e8a42e97_name')]",
+                "status": 4,
+                "author_email": "carlo.khanati@lebanonlab.bankaudilab.com",
+                "author": "Carlo A. Khanati",
+                "deployer": "GitHub",
+                "message": "fix  multiple rows insert db\n",
+                "start_time": "2017-10-13T13:49:44.9583477Z",
+                "end_time": "2017-10-13T13:49:53.8780282Z",
+                "active": true
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_url_shortner_web_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c05189e6-d49a-4c94-a3de-5a792beb4f3e/resourcegroups/url-shortner-rg/providers/Microsoft.Web/sites/url-shortner-web/deployments/09ae4394b77eb3844e5383c69d6f44fda478c82b'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_url_shortner_web_name'), '/', parameters('deployments_09ae4394b77eb3844e5383c69d6f44fda478c82b_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "North Europe",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_09ae4394b77eb3844e5383c69d6f44fda478c82b_name')]",
+                "status": 4,
+                "author_email": "carlo.khanati@lebanonlab.bankaudilab.com",
+                "author": "Carlo A. Khanati",
+                "deployer": "GitHub",
+                "message": "insert handle multiple rows\n",
+                "start_time": "2017-10-13T08:14:16.5193523Z",
+                "end_time": "2017-10-13T08:14:22.8042938Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_url_shortner_web_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c05189e6-d49a-4c94-a3de-5a792beb4f3e/resourcegroups/url-shortner-rg/providers/Microsoft.Web/sites/url-shortner-web/deployments/2c1c0193b06bc49920147d5542d5c867d050ecee'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_url_shortner_web_name'), '/', parameters('deployments_2c1c0193b06bc49920147d5542d5c867d050ecee_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "North Europe",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_2c1c0193b06bc49920147d5542d5c867d050ecee_name')]",
+                "status": 4,
+                "author_email": "carlo.khanati@lebanonlab.bankaudilab.com",
+                "author": "Carlo A. Khanati",
+                "deployer": "GitHub",
+                "message": "remote test code\n",
+                "start_time": "2017-10-13T07:51:11.8429398Z",
+                "end_time": "2017-10-13T07:51:18.2337983Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_url_shortner_web_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c05189e6-d49a-4c94-a3de-5a792beb4f3e/resourcegroups/url-shortner-rg/providers/Microsoft.Web/sites/url-shortner-web/deployments/540b67971b87e0e002bf3c66c1818701902b712c'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_url_shortner_web_name'), '/', parameters('deployments_540b67971b87e0e002bf3c66c1818701902b712c_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "North Europe",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_540b67971b87e0e002bf3c66c1818701902b712c_name')]",
+                "status": 4,
+                "author_email": "carlo.khanati@lebanonlab.bankaudilab.com",
+                "author": "Carlo A. Khanati",
+                "deployer": "GitHub",
+                "message": "remote test script\n",
+                "start_time": "2017-10-13T07:43:54.4258985Z",
+                "end_time": "2017-10-13T07:44:00.8180338Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_url_shortner_web_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c05189e6-d49a-4c94-a3de-5a792beb4f3e/resourcegroups/url-shortner-rg/providers/Microsoft.Web/sites/url-shortner-web/deployments/30b5941a4c58eae846e0868d1c040b752d64a273'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_url_shortner_web_name'), '/', parameters('deployments_30b5941a4c58eae846e0868d1c040b752d64a273_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "North Europe",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_30b5941a4c58eae846e0868d1c040b752d64a273_name')]",
+                "status": 4,
+                "author_email": "carlo.khanati@lebanonlab.bankaudilab.com",
+                "author": "Carlo A. Khanati",
+                "deployer": "GitHub",
+                "message": "add pem\n",
+                "start_time": "2017-10-13T07:38:02.6915249Z",
+                "end_time": "2017-10-13T07:38:09.8001987Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_url_shortner_web_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c05189e6-d49a-4c94-a3de-5a792beb4f3e/resourcegroups/url-shortner-rg/providers/Microsoft.Web/sites/url-shortner-web/deployments/2bbf08ac0699bbf28ca51aaec59424908e65a7c7'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_url_shortner_web_name'), '/', parameters('deployments_2bbf08ac0699bbf28ca51aaec59424908e65a7c7_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "North Europe",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_2bbf08ac0699bbf28ca51aaec59424908e65a7c7_name')]",
+                "status": 4,
+                "author_email": "carlo.khanati@lebanonlab.bankaudilab.com",
+                "author": "Carlo A. Khanati",
+                "deployer": "GitHub",
+                "message": "add test on azure\n",
+                "start_time": "2017-10-11T14:25:06.8782665Z",
+                "end_time": "2017-10-11T14:25:12.9338189Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_url_shortner_web_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c05189e6-d49a-4c94-a3de-5a792beb4f3e/resourcegroups/url-shortner-rg/providers/Microsoft.Web/sites/url-shortner-web/deployments/a9e36558735dc536e27746786f1d48baa48e698c'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_url_shortner_web_name'), '/', parameters('deployments_a9e36558735dc536e27746786f1d48baa48e698c_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "North Europe",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_a9e36558735dc536e27746786f1d48baa48e698c_name')]",
+                "status": 4,
+                "author_email": "carlo.khanati@lebanonlab.bankaudilab.com",
+                "author": "Carlo A. Khanati",
+                "deployer": "GitHub",
+                "message": "separate files\n",
+                "start_time": "2017-10-11T13:27:57.2445786Z",
+                "end_time": "2017-10-11T13:28:50.6899237Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_url_shortner_web_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/c05189e6-d49a-4c94-a3de-5a792beb4f3e/resourceGroups/url-shortner-rg/providers/Microsoft.Web/sites/url-shortner-web/hostNameBindings/url-shortner-web.azurewebsites.net'.",
+            "type": "Microsoft.Web/sites/hostNameBindings",
+            "name": "[concat(parameters('sites_url_shortner_web_name'), '/', parameters('hostNameBindings_url_shortner_web.azurewebsites.net_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "North Europe",
+            "scale": null,
+            "properties": {
+                "siteName": "url-shortner-web",
+                "domainId": null,
+                "hostNameType": "Verified"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_url_shortner_web_name'))]"
+            ]
+        }
+    ]
+}
