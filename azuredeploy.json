@@ -41,8 +41,8 @@
                         }
                     ]
                   },
-                "RepoUrl": "[parameters('repoUrl')]",
-                "branch": "[parameters('branch')]",
+                "RepoUrl": "https://github.com/carlokhanati/url-shortner-mysql",
+                "branch": "master",
                 "enabled": true,
                 "hostNameSslStates": [
                     {
