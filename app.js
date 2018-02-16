@@ -36,6 +36,7 @@ app.get('/token', (req, res) => {
 });
 app.use('/ready', require('./lib/routes/ready').ready((defaultRouter())));
 app.use('/url', require('./lib/routes/url')(authenticatedRouter()));
+app.use('/user', require('./lib/routes/user')(authenticatedRouter()));
 app.use('/', require('./lib/routes/urlredirect')(defaultRouter()));
 // error handling middleware
 appErrorHandler(app);

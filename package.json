@@ -23,6 +23,7 @@
     "mocha": "^3.2.0"
   },
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.1",
@@ -30,6 +31,7 @@
     "express": "^4.14.0",
     "express-session": "^1.15.6",
     "express-validation": "^1.0.1",
+    "formidable": "^1.1.1",
     "fs": "0.0.1-security",
     "jade": "^1.11.0",
     "joi": "^10.4.1",
