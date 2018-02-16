@@ -21,6 +21,7 @@ const appErrorHandler = errorHandler([ErrStrategies.defaultStrategy]);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+app.use(express.static(`${__dirname}/public`));
 app.set('trust proxy', 1);
 app.use(session({
   secret: 'shortnerSecret',
@@ -36,7 +37,7 @@ app.get('/token', (req, res) => {
 });
 app.use('/ready', require('./lib/routes/ready').ready((defaultRouter())));
 app.use('/url', require('./lib/routes/url')(authenticatedRouter()));
-app.use('/user', require('./lib/routes/user')(authenticatedRouter()));
+app.use('/users', require('./lib/routes/user')(authenticatedRouter()));
 app.use('/', require('./lib/routes/urlredirect')(defaultRouter()));
 // error handling middleware
 appErrorHandler(app);

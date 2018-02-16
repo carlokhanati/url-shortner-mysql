@@ -1,0 +1,130 @@
+script.
+  function deleteData(obj) {
+    let UserName = $(obj).data("id");
+    $.ajax({
+      type: 'DELETE',
+      contentType: 'application/json',
+      url: '/users/'+UserName,
+
+      success: function (result) {
+        location.reload();
+      },
+      error: function (e) {
+          showAlert('Failed to Delete User: ' + e.responseText);
+          console.log('Error deleting User');
+      }
+    });
+  }
+  function clearData() {
+    $("#method").val('');
+    $("#UserName").val('');
+    $("#FullName").val('');
+    $("#Email").val('');
+    $("#Password").val('');
+    $('#alertDiv').hide();
+    $('#alertDiv').html();
+  }
+  function updateData(obj) {
+    let UserName = $(obj).data("id");
+    $.ajax({
+      type: 'GET',
+      contentType: 'application/json',
+      url: '/users/'+UserName,
+
+      success: function (result) {
+        $("#method").val('PUT');
+        $("#UserName").val(result.UserName);
+        $("#UserName").attr('readonly','readonly');
+        $("#FullName").val(result.FullName);
+        $("#Email").val(result.Email);
+        $("#Password").att('visible',false);
+        $('#alertDiv').hide();
+        $('#alertDiv').html();
+        showDataInput('DataInput');
+      },
+      error: function (e) {
+          showAlert('Failed to Get User Data');
+          $('#alertDiv').html(e.responseText);
+          $('#alertDiv').show();
+      }
+    });
+    
+  }
+  function newData() {
+    clearData();
+    $("#method").val('POST');
+    $("#Password").att('visible',true);
+    showDataInput('DataInput');
+  }
+  function submitData() {
+    const method = $("#method").val();
+    const jsonData = {}
+    var UserName = $("#UserName").val();
+    jsonData.FullName = $("#FullName").val();
+    jsonData.Email = $("#Email").val();
+    const validateData = isValid(jsonData);
+    if (validateData.isValid) {
+      let methodURL = '';
+      if (method === 'POST') {
+        jsonData.Password = $("#Password").val();
+        methodURL = '/customers';
+      }
+      else {
+        methodURL = `/cusers/${UserName}`;
+      }
+      $.ajax({
+        type: method,
+        contentType: 'application/json',
+        data: JSON.stringify(jsonData),
+        url: methodURL,
+
+        success: function () {
+          location.reload();
+        },
+        error: function (e) {
+            showAlert('Failed to Save Data');
+            $('#alertDiv').html(e.responseText);
+            $('#alertDiv').show();
+        }
+      });
+    }
+    else {
+      $('#alertDiv').show();
+      $('#alertDiv').html(validateData.errors);
+    }
+  }
+  function isValid(obj) {
+    const result={};
+    result.isValid= true;
+    result.errors = '<ul class="errors">';
+    if (isEmpty(obj.UserName)) {
+      result.isValid = false;
+      result.errors += "<li>UserName should not be empty</li>"
+    }
+    result.errors += "</ul>"
+    return result;
+  }
+div(id="DataInput",class="DataInput panel panel-danger")
+  div(class="panel-heading")
+    h2 Customer Information
+  div(class="panel-body")
+    div(class="alert alert-danger alert-dismissable",id='alertDiv')
+    input(type="hidden",id="method",name="method",class="form-control")
+    input(type="hidden",id="UserName",name="UserName",class="form-control")
+    div(class="form-group")
+      label(for="UserName") User Name
+      input(type="text",id="UserName",name="UserName",class="form-control required")
+    div(class="form-group")
+      label(for="FullName") Full Name
+      input(type="text",id="FullName",name="FullName",class="form-control required")
+    div(class="form-group")
+      label(for="Email") Email
+      input(type="text",id="Email",name="Email",class="form-control required")
+    div(class="form-group")
+      label(for="Password") Email
+      input(type="password",id="Password",name="Password",class="form-control")
+  div(class="panel-footer")
+    div(class="form-group")
+      input(type="button",class="btn btn-default",value="Submit",onclick="submitData()")
+      label &nbsp;|&nbsp; 
+      a(href="javascript:hideDataInput('DataInput')",id="BacktoList") Back to list

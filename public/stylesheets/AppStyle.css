@@ -1,0 +1,80 @@
+.DataInput {
+    position: fixed;
+    display: none;
+    top: 5px;
+	right: 5px;
+    width: 0;
+    max-height: 99%;
+    /* border: 1px solid black; */
+    z-index: 1000;
+    overflow: scroll;
+	background-color: rgb(250, 248, 248);
+	font-size: medium;
+	color: red
+}
+
+.pagination .active a {
+	background-color: red;
+}
+.navbar {
+	margin-bottom:0px;
+}
+
+
+.MessageDiv
+{
+	text-decoration: underline;
+	text-align: left;
+	margin-left: 10px;
+}
+
+table,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  border: 0;
+}
+
+header {
+	font-family: 'Quicksand';
+	padding: 10px 10px;
+	color: #fff;
+	font-size: 25px;
+	text-align: center;
+	background-color:rgb(240, 104, 104);
+  }
+  .container {
+	width: 100%;
+	margin: 20px 0px;
+	max-width: 99%;
+  }
+
+table tr.resultRow,
+{
+	border-bottom-color: rgb(255, 255, 255);
+}
+			
+			
+			
+table tr.resultRow,
+{
+	color: rgb(255, 0, 0);
+}
+
+
+table .TrHeader, .TrFooter
+{
+	background-color: rgb(255, 0, 0);
+	color: rgb(255, 255, 255);
+}
+		
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #e7e7e7;
+    color: #555;
+}
+.panel-heading {
+	cursor: move;
+}

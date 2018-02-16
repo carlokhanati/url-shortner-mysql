@@ -2,6 +2,29 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(name="viewport",content="width=device-width, initial-scale=1")
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/jquery-ui.min.css')
+    link(rel='stylesheet', href='/stylesheets/dataTables.bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/responsive.dataTables.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-datetimepicker.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-datepicker.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-select.min.css')
+    link(rel='stylesheet', href='/stylesheets/AppStyle.css')
+    //-link(rel='stylesheet', href='fixedColumns.dataTables.min.css')
+    script(src="/scripts/jquery.min.js")
+    script(src="/scripts/jquery-ui.min.js")
+    script(src="/scripts/bootstrap.min.js")
+    script(src="/scripts/jquery.dataTables.min.js")
+    script(src="/scripts/dataTables.bootstrap.min.js")
+    script(src="/scripts/bootbox.min.js")
+    script(src="/scripts/bootstrap-datetimepicker.min.js")
+    script(src="/scripts/bootstrap-datepicker.min.js")
+    script(src="/scripts/dataTables.responsive.min.js")
+    script(src="/scripts/bootstrap-select.min.js")
+    script(src="/scripts/AppScript.js")
   body
-    block content
+    header
+      block headerTitle
+    .container
+      block content
