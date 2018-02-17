@@ -37,7 +37,7 @@ script.
         $("#UserName").attr('readonly','readonly');
         $("#FullName").val(result.FullName);
         $("#Email").val(result.Email);
-        $("#Password").att('visible',false);
+        $("#PasswordGroup").hide();
         $('#alertDiv').hide();
         $('#alertDiv').html();
         showDataInput('DataInput');
@@ -53,13 +53,15 @@ script.
   function newData() {
     clearData();
     $("#method").val('POST');
-    $("#Password").att('visible',true);
+    $("#UserName").removeAttr('readonly');
+    $("#PasswordGroup").show();
     showDataInput('DataInput');
   }
   function submitData() {
     const method = $("#method").val();
     const jsonData = {}
     var UserName = $("#UserName").val();
+    jsonData.UserName=UserName;
     jsonData.FullName = $("#FullName").val();
     jsonData.Email = $("#Email").val();
     const validateData = isValid(jsonData);
@@ -67,10 +69,10 @@ script.
       let methodURL = '';
       if (method === 'POST') {
         jsonData.Password = $("#Password").val();
-        methodURL = '/customers';
+        methodURL = '/users';
       }
       else {
-        methodURL = `/cusers/${UserName}`;
+        methodURL = `/users/${UserName}`;
       }
       $.ajax({
         type: method,
@@ -106,11 +108,10 @@ script.
   }
 div(id="DataInput",class="DataInput panel panel-danger")
   div(class="panel-heading")
-    h2 Customer Information
+    h2 User Information
   div(class="panel-body")
     div(class="alert alert-danger alert-dismissable",id='alertDiv')
     input(type="hidden",id="method",name="method",class="form-control")
-    input(type="hidden",id="UserName",name="UserName",class="form-control")
     div(class="form-group")
       label(for="UserName") User Name
       input(type="text",id="UserName",name="UserName",class="form-control required")
@@ -120,8 +121,8 @@ div(id="DataInput",class="DataInput panel panel-danger")
     div(class="form-group")
       label(for="Email") Email
       input(type="text",id="Email",name="Email",class="form-control required")
-    div(class="form-group")
-      label(for="Password") Email
+    div(class="form-group" id='PasswordGroup')
+      label(for="Password") Password
       input(type="password",id="Password",name="Password",class="form-control")
   div(class="panel-footer")
     div(class="form-group")
