@@ -1,0 +1,20 @@
+extend layout
+block headerTitle
+  h1 #{title}
+block content
+  #login.center-vertical
+    form.well(id='form-login', method='post',action='authenticate')
+      h2 Hello!
+      h6 Please Login To Your Account
+      input.form-control(type='hidden', id='mode', name='mode', value='view')
+      .form-group
+        label Username
+        input.form-control(type='text', id='UserName', name='UserName')
+      .form-group
+        label Password
+        input.form-control(type='password', id='Password', name='Password')
+      .controls
+        button(type='submit').btn.btn-primary.button-sign-in
+          span.glyphicon.glyphicon-lock
+          | Sign In
+      .clearfix

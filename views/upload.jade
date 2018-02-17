@@ -1,18 +1,17 @@
-html
-    head
-      title URL Shortener Microservice
-      link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', type='text/css')
-    body
-      div.container-fluid
-        div.col-xs-2
-        div.col-xs-8
-          div.row
-            h1 Upload File
-                br
-                small URL Shortener Microservice to upload url list
-          div.row
-          form(action="/upload", method="post", enctype="multipart/form-data")
-            input(type="file", name="ufile" accept=".txt")
-            input(type="submit", name="Upload")
-          a(target="blank", href="/file/latest") Lastest Uploaded file #{uploaded ? '| New file uploaded':''}           
-        div.col-xs-2
+extend layout
+block headerTitle
+  h1 #{title}
+block content
+  div.container-fluid
+    div.col-xs-2
+    div.col-xs-8
+      div.row
+        h1 Upload File
+            br
+            small Url Shortener Microservice to upload url list
+      div.row
+      form(action="/upload", method="post", enctype="multipart/form-data")
+        input(type="file", name="ufile" accept=".txt")
+        input(type="submit", name="Upload", placeholder="Select file to upload")
+      a(target="blank", href="/file/latest") Lastest Uploaded file #{uploaded ? '| New file uploaded':''}           
+    div.col-xs-2
