@@ -4,6 +4,8 @@ block headerTitle
 block content
   #login.center-vertical
     form.well(id='form-login', method='post',action='authenticate')
+      if error 
+        div(class="alert alert-danger") #{error}
       h2 Hello!
       h6 Please Login To Your Account
       input.form-control(type='hidden', id='mode', name='mode', value='view')

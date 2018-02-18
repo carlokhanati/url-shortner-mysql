@@ -1,10 +1,3 @@
-https://survey.kanari.co/#/survey/914?TDate=2017-10-05&Chan=001&Loc=002&Seg=XXX&Tran=XXX&CustRef=YYYYYYYY&Empl=ZZZZZZZZ&m_url=true1
-https://survey.kanari.co/#/survey/914?TDate=2017-10-05&Chan=001&Loc=002&Seg=XXX&Tran=XXX&CustRef=YYYYYYYY&Empl=ZZZZZZZZ&m_url=true2
-https://survey.kanari.co/#/survey/914?TDate=2017-10-05&Chan=001&Loc=002&Seg=XXX&Tran=XXX&CustRef=YYYYYYYY&Empl=ZZZZZZZZ&m_url=true3
-https://survey.kanari.co/#/survey/914?TDate=2017-10-05&Chan=001&Loc=002&Seg=XXX&Tran=XXX&CustRef=YYYYYYYY&Empl=ZZZZZZZZ&m_url=true4
-https://survey.kanari.co/#/survey/914?TDate=2017-10-05&Chan=001&Loc=002&Seg=XXX&Tran=XXX&CustRef=YYYYYYYY&Empl=ZZZZZZZZ&m_url=true5
-https://survey.kanari.co/#/survey/914?TDate=2017-10-05&Chan=001&Loc=002&Seg=XXX&Tran=XXX&CustRef=YYYYYYYY&Empl=ZZZZZZZZ&m_url=true6
-https://survey.kanari.co/#/survey/914?TDate=2017-10-05&Chan=001&Loc=002&Seg=XXX&Tran=XXX&CustRef=YYYYYYYY&Empl=ZZZZZZZZ&m_url=true7
-https://survey.kanari.co/#/survey/914?TDate=2017-10-05&Chan=001&Loc=002&Seg=XXX&Tran=XXX&CustRef=YYYYYYYY&Empl=ZZZZZZZZ&m_url=true8
-https://survey.kanari.co/#/survey/914?TDate=2017-10-05&Chan=001&Loc=002&Seg=XXX&Tran=XXX&CustRef=YYYYYYYY&Empl=ZZZZZZZZ&m_url=true9
-https://survey.kanari.co/#/survey/914?TDate=2017-10-05&Chan=001&Loc=002&Seg=XXX&Tran=XXX&CustRef=YYYYYYYY&Empl=ZZZZZZZZ&m_url=true10
+http://www.google.com
+http://www.msn.com
+http://www.yahoo.com

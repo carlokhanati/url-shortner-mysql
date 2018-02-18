@@ -2,35 +2,50 @@ extend layout
 block headerTitle
   h1 #{title}
 block content
-  div.container-fluid
-    div.col-xs-2
-    div.col-xs-8
-      div.row
-        h1 API Projects
-            br
-            small Url Shortener Microservice
-      form(action="/upload",class='form-inline', method="post", enctype="multipart/form-data")
-        div(class="form-group")
-          label(for="file") Choose file to upload
-        div(class="form-group")
-          input(type="file", name="ufile" accept=".txt", class="form-control required")
-        div(class="form-group")
-          input(type="submit", name="Upload",class="btn btn-default")
-        div(class="form-group")
-          a(target="blank", href="/file/latest") Lastest Uploaded file #{uploaded ? '| New file uploaded':''}
-      div.row
-        b User stories:
-        ul
-          li I can pass a URL as a parameter and I will receive a shortened URL in the JSON response.
-          li If I pass an invalid URL that doesn't follow the valid http://www.url.com format, the JSON response will contain an error instead.
-          li When I visit that shortened URL, it will redirect me to my original link.
-      div.row
-        b Url usage:
-        ul
-            li
-                code #{host}/new/http://lefkowitz.me
-        b Url output:
-        ul
-            li
-                code { "original_url":"http://lefkowitz.me", "short_url":"#{host}/rk3hbuLb" }
-    div.col-xs-2
+  form(action="/url/upload",class='form-inline', method="post", enctype="multipart/form-data")
+    div(class="form-group")
+      label(for="file") Choose file to upload
+    div(class="form-group")
+      input(type="file", name="ufile" accept=".txt", class="form-control required")
+    div(class="form-group")
+      input(type="submit", name="Upload",class="btn btn-default")
+    div(class="form-group")
+      a(target="blank", href="/url/file/latest") Lastest Uploaded file #{uploaded ? '| New file uploaded':''}
+  br
+  br
+  script.
+    function deleteData(obj) {
+      let short_url = $(obj).data("id");
+      $.ajax({
+        type: 'DELETE',
+        contentType: 'application/json',
+        url: '/url/'+short_url,
+
+        success: function (result) {
+          location.reload();
+        },
+        error: function (e) {
+            showAlert('Failed to Delete User: ' + e.responseText);
+            console.log('Error deleting User');
+        }
+      });
+    }
+  table(class="table table-striped",id="ResultTable",border="1")
+    thead
+      tr(class="TrHeader") 
+        th Short Url
+        th Original Url
+        th Visited
+        th(style="width:1%")
+    each urlInfo in data
+      tr(class="resultRow") 
+        td #{urlInfo.short_url}
+        td #{urlInfo.original_url}
+        td #{urlInfo.visited}
+        td 
+          div(class="dropdown")
+              button(class="btn btn-secondary dropdown-toggle btn-xs",type="button",id="dropdownMenu1",data-toggle="dropdown",aria-haspopup="true",aria-expanded="true") Actions
+                span(class="caret")
+              ul(class="dropdown-menu pull-right",aria-labelledby="dropdownMenu1")
+                li
+                  a(id="aDelete",onclick="confirmDelete(this); return false;",href="#",data-id=urlInfo.short_url) Delete
