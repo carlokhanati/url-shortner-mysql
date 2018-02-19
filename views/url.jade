@@ -36,12 +36,14 @@ block content
         th Short Url
         th Original Url
         th Visited
+        th Added        
         th(style="width:1%")
     each urlInfo in data
       tr(class="resultRow") 
         td #{urlInfo.short_url}
         td #{urlInfo.original_url}
         td #{urlInfo.visited}
+        td #{urlInfo.added_date}
         td 
           div(class="dropdown")
               button(class="btn btn-secondary dropdown-toggle btn-xs",type="button",id="dropdownMenu1",data-toggle="dropdown",aria-haspopup="true",aria-expanded="true") Actions
