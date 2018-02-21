@@ -33,12 +33,44 @@ html
             span(class="icon-bar")                        
           a(class="navbar-brand",href="#") App
         div(class="collapse navbar-collapse",id="myNavbar")
-          ul(class="nav navbar-nav")
-            li() 
-              a(href="/url?mode=view") Home
-            li
+          script.
+            function getUserPermissions() {
+              $.ajax({
+                type: 'GET',
+                contentType: 'application/json',
+                url: '/users/menu',
+
+                success: function (result) {
+                  if (result.HomePage) {
+                    const home = result.HomePage;
+                    const permissions = result.Permissions.split(',');
+                    $('#Homeli').show();
+                    $("#Home").attr('href',`/${home}?mode=view`);
+                    permissions.forEach((itm) => {
+                      $(`#${itm}`).show();
+                    })
+                  }
+                },
+                error: function (e) {
+                    console.log('User not logged in');
+                }
+              });
+            }
+            function init() {
+              $('#Homeli').hide();
+              $('#url').hide();
+              $('#users').hide();
+              getUserPermissions();
+            }
+            jQuery(document).ready(($) => {
+              init();
+            })
+          ul(class="nav navbar-nav" id='urlMenu')
+            li(id='Homeli')
+              a(href="/url?mode=view" id='Home') Home
+            li(id='url')
               a(href="/url?mode=view") Url Shortner
-            li
+            li(id='users')
               a(href="/users?mode=view") Users
     header
       block headerTitle

@@ -21,6 +21,8 @@ script.
     $("#FullName").val('');
     $("#Email").val('');
     $("#Password").val('');
+    $("#Permissions").val('');
+    $("#HomePage").val('');
     $('#alertDiv').hide();
     $('#alertDiv').html();
   }
@@ -37,6 +39,8 @@ script.
         $("#UserName").attr('readonly','readonly');
         $("#FullName").val(result.FullName);
         $("#Email").val(result.Email);
+        $("#Permissions").val(result.Permissions.split(','));
+        $("#HomePage").val(result.HomePage); 
         $("#PasswordGroup").hide();
         $('#alertDiv').hide();
         $('#alertDiv').html();
@@ -64,6 +68,8 @@ script.
     jsonData.UserName=UserName;
     jsonData.FullName = $("#FullName").val();
     jsonData.Email = $("#Email").val();
+    jsonData.HomePage = $("#HomePage").val();
+    jsonData.Permissions = $("#Permissions").val().join(',');
     const validateData = isValid(jsonData);
     if (validateData.isValid) {
       let methodURL = '';
@@ -99,9 +105,18 @@ script.
     const result={};
     result.isValid= true;
     result.errors = '<ul class="errors">';
+   
     if (isEmpty(obj.UserName)) {
       result.isValid = false;
       result.errors += "<li>UserName should not be empty</li>"
+    }
+     if (isEmpty(obj.Permissions)) {
+      result.isValid = false;
+      result.errors += "<li>Permissions should not be empty</li>"
+    }
+    if (!isEmail(obj.Email)) {
+      result.isValid = false;
+      result.errors += "<li>Email is not in the right format</li>"
     }
     result.errors += "</ul>"
     return result;
@@ -124,6 +139,16 @@ div(id="DataInput",class="DataInput panel panel-default")
     div(class="form-group" id='PasswordGroup')
       label(for="Password") Password
       input(type="password",id="Password",name="Password",class="form-control")
+    div(class="form-group")
+        label(for="Permissions") Permissions
+        select(class="form-control",id="Permissions",name="Permissions" multiple)
+          option(value="url") Url Shortner
+          option(value="users") Users
+    div(class="form-group")
+        label(for="HomePage") Home Page
+        select(class="form-control",id="HomePage",name="HomePage")
+          option(value="url") Url Shortner
+          option(value="users") Users
   div(class="panel-footer")
     div(class="form-group")
       input(type="button",class="btn btn-default",value="Submit",onclick="submitData()")

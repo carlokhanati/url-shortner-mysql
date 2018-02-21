@@ -11,12 +11,16 @@ block content
         th UserName
         th Full Name
         th Email
+        th Permissions
+        th Home Page
         th(style="width:1%")
     each user in data
       tr(class="resultRow") 
         td #{user.UserName}
         td #{user.FullName}
         td #{user.Email}
+        td #{user.Permissions}
+        td #{user.HomePage}
         td 
           div(class="dropdown")
               button(class="btn btn-secondary dropdown-toggle btn-xs",type="button",id="dropdownMenu1",data-toggle="dropdown",aria-haspopup="true",aria-expanded="true") Actions
