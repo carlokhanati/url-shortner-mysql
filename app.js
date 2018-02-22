@@ -29,12 +29,6 @@ app.use(session({
   saveUninitialized: true,
 }));
 //app.use('/', require('./lib/routes/index')(defaultRouter()));
-app.get('/token', (req, res) => {
-  const token = jwt.signToken({ fullname: 'Carlo Khanati', id: '234', email: 'carlo.khanati@gmail.com' });
-  req.session.auth = token;
-  res.send(token);
-  res.end();
-});
 app.use('/ready', require('./lib/routes/ready').ready((defaultRouter())));
 app.use('/url', require('./lib/routes/url')(authenticatedRouter()));
 app.use('/users', require('./lib/routes/user')(authenticatedRouter()));
