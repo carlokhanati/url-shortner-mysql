@@ -43,7 +43,7 @@ html
                 success: function (result) {
                   if (result.HomePage) {
                     const home = result.HomePage;
-                    const permissions = result.Permissions.split(',');
+                    const permissions = result.Permissions;
                     $('#Homeli').show();
                     $("#Home").attr('href',`/${home}?mode=view`);
                     permissions.forEach((itm) => {
